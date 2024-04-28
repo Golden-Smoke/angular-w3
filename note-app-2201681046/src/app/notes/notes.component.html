@@ -1,0 +1,43 @@
+<div class="notes-wrapper">
+    <form class="notes-form" (submit)="saveNote($event)">
+        <div class="form-field">
+            <label for="title">Title</label>
+            <input 
+                type="text"
+                [(ngModel)]="noteTitle" 
+                name="title" 
+                id="title">
+        </div>
+        <p [className]="validateField(noteTitle,minimumTitleLength)">Minimum required symbols : {{minimumTitleLength}}</p>
+
+        <div class="form-field">
+            <label for="description">Description</label>
+            <textarea 
+                type="text"
+                [(ngModel)]="noteDescription" 
+                name="description" 
+                id="description" 
+                required>
+            </textarea>
+        </div>
+        <p [className]="validateField(noteDescription,minimumDescriptionLength)">Minimum required symbols : {{minimumDescriptionLength}}</p>
+
+        <button type="submit">Save Note</button>
+    </form>
+    <aside class="notes-list">
+        <h2>Your notes</h2>
+        @if(notes.length === 0) { <p>No notes</p> }
+
+            @for (note of notes; track $index) {
+                <div [class]="'note ' + isNoteSelected($index)" (click)="setActiveNote($index)">
+                    <h3>{{note.title}}</h3>
+                    <p>{{note.description}}</p>
+
+                    <div class="action-btns">
+                        <button (click)="setActiveNote($index)">Edit</button>
+                        <button [disabled]="index != null" (click)="deleteNote($index)">Delete</button>
+                    </div>
+                </div>
+            }
+    </aside>
+</div>

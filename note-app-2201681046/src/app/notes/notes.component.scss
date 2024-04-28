@@ -1,0 +1,82 @@
+// Form
+
+label {
+    display:block;
+    font-size:1.25rem;
+    font-weight: bold;
+    font-family: inherit;
+    margin-block-end:.5rem;
+}
+
+input,textarea {
+    display: block;
+    border:2px solid rgb(70, 70, 70);
+    width: 100%;
+    padding: 1em;
+    border-radius:7px;
+    font-family: inherit;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    font-size:1.125rem;
+    padding:.3em 1em;
+    background-color: black;
+    border-radius: 7px;
+    color:#fff;
+    cursor: pointer;
+    margin-block:1rem;
+}
+button:disabled {
+    opacity: 0.5;
+}
+.form-field {
+    margin-block:1rem;
+}
+
+// Notes
+
+.notes-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 25rem;
+    gap:1rem;
+    margin-block:1.5rem;
+}
+aside {
+    border-left:2px solid;
+    padding: 1em;
+}
+.notes-list {
+    max-height: 420px;
+    overflow-y: scroll;
+}
+.note {
+    border:2px dashed;
+    padding:1em;
+    border-radius: 7px;
+    margin-block-end:1rem;
+}
+.note.selected {
+    background:rgb(189, 188, 188);
+}
+.action-btns {
+    display:flex;
+    gap:1rem;
+}
+@media screen and (max-width:650px) {
+    .notes-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+// Validation
+
+p {
+    transition: background-color 200ms ease-in-out;
+    padding:.5em;
+}
+.valid {background-color: #187c0d; color:#fff;}
+.invalid {background-color: #b50303; color:#fff;}
